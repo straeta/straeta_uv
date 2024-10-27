@@ -259,4 +259,56 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+// Mobile Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+  const navOpenBtn = document.querySelector(".nav-open-btn");
+  const navCloseBtn = document.querySelector(".nav-close-btn");
+  const navbar = document.querySelector("[data-navbar]");
+  const overlay = document.querySelector("[data-overlay]");
 
+  // Open mobile menu
+  const openNav = function() {
+    navbar.classList.add("active");
+    overlay.classList.add("active");
+    document.body.classList.add("nav-active");
+  };
+
+  // Close mobile menu
+  const closeNav = function() {
+    navbar.classList.remove("active");
+    overlay.classList.remove("active");
+    document.body.classList.remove("nav-active");
+  };
+
+  // Add click events
+  if(navOpenBtn) navOpenBtn.addEventListener("click", openNav);
+  if(navCloseBtn) navCloseBtn.addEventListener("click", closeNav);
+  if(overlay) overlay.addEventListener("click", closeNav);
+
+  // Close menu when clicking nav links
+  const navLinks = document.querySelectorAll(".navbar-link");
+  navLinks.forEach(link => {
+    link.addEventListener("click", closeNav);
+  });
+});
+
+// GIF source switcher based on screen size
+document.addEventListener('DOMContentLoaded', function() {
+  const heroImage = document.querySelector('.hero .img-cover');
+  const desktopGif = 'https://ik.imagekit.io/g7q35o9sd/data-analytics_fSAKRdv68.gif?updatedAt=1730056931869';
+  const mobileGif = 'https://ik.imagekit.io/g7q35o9sd/da3_Z8oyiV8_P.gif?updatedAt=1730061740466';
+
+  function switchGifSource() {
+    if (window.innerWidth <= 768) {
+      heroImage.src = mobileGif;
+    } else {
+      heroImage.src = desktopGif;
+    }
+  }
+
+  // Initial check
+  switchGifSource();
+
+  // Check on resize
+  window.addEventListener('resize', switchGifSource);
+});
