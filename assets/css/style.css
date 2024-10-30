@@ -1407,7 +1407,7 @@ body.nav-active { overflow: hidden; }
   font-size: 1.5rem;
   transition: all 0.3s ease;
   cursor: pointer;
-  color: var(--charcoal);
+  color: black;
 }
  
 /* Switch Styles */
